@@ -1,7 +1,6 @@
-import React from 'react';
+import {React, useEffect } from 'react';
 import './About.css';
 import { Container, Row, Col } from "react-bootstrap";
-import { FaPhone, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import c1 from '../image/image1.jpg';
 import c2 from '../image/c2.jpg';
 import backgroundImage from '../image/backgroundImage.jpg';
@@ -9,21 +8,41 @@ import image1 from '../image/c1.jpg';
 import icon from '../image/icon.jpg';
 import track from '../image/track.jpg';
 import route from '../image/route.jpg';
-
+import bg from '../image/page-title.png';
 
 const About = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll('.image_column, .content_column, .steps, .text_section, .image_section');
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); 
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return(
     <div className="container_fluid p-0">
       <div className="car_background">
-        <div className="overlay_text">
-          <h1>About Us</h1>
-          <p>Home / About Us</p>
-        </div>
+        <img src={bg} alt="Background" className="bookurtaxi-banner-img" />
+        <div className="bookurtaxi-overlay">
+          <h1 className="bookurtaxi-title">About</h1>
+          <p className="bookurtaxi-breadcrumb">
+            <a href="/">Home</a> &gt; <a href="/">Pages</a> &gt; <a href="/">About</a>
+          </p>
       </div>
+
+    </div>
       <div className="row">
-        {/* Image Column */}
+        
         <div className="image_column">
-        {/* Displaying three images */}
         <div className="image_item">
           <img src={c1} alt="" className="image1" />
         </div>
@@ -31,7 +50,7 @@ const About = () => {
           <img src={c2} alt="" className="image2" />
         </div>
         </div>
-        {/* Content Column */}
+
         <div className="content_column">
         <h1>WELCOME TO OUR COMPANY</h1>
         <h2>Feel the difference and Relaxation!</h2>
@@ -40,19 +59,18 @@ const About = () => {
          Our portfolio includes dozens of successfully completed projects of houses of different storeys.
         </p>
         <ul>
-          <li>We successfully cope with tasks of varying complexity.</li>
-          <li>Long-term guarantees and regularly.</li>
-          <li>Master new technologies.</li>
+          <li>✔ We successfully cope with tasks of varying complexity.</li>
+          <li>✔ Long-term guarantees and regularly.</li>
+          <li>✔ Master new technologies.</li>
         </ul>
         <h3>Call For Taxi</h3>
         <p className="phone_number">5267-214-392</p>
       </div>
       </div>
-        <div className="background_container">
-              {/* Background Image as img tag */}
+       <div className="background_container">
+            
               <img src={backgroundImage} alt="" className="background_image" />
               <div className="main_content">
-                {/* Content Section */}
                 <div className="text_section">
                   <h1>OUR SERVICES</h1>
                   <h2>Our Best Services For You</h2>
@@ -63,14 +81,13 @@ const About = () => {
                     <li> 04. Airport Transfer</li>
                   </ul>
                 </div>
-        
-                {/* Image Section */}
+    
                 <div className="image_section">
                   <img src={image1} alt="Company" className="company_image" />
                 </div>
               </div>
-              </div>
-            <Container className='how-it-works'>
+              </div> 
+      <Container className='how-it-works'>
             <div className="section_title">
               <h6>ORDER TAXI ONLINE</h6>
               <h2>How It Works</h2>

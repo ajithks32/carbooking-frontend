@@ -1,44 +1,102 @@
-/* Add a full-height background image */
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-animation {
+  opacity: 0;
+  animation: fadeInUp 1s ease-in-out forwards;
+}
+
+.image_column .image_item,
+.content_column,
+.steps,
+.text_section,
+.image_section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-in-out;
+}
+
+.image_column.visible .image_item,
+.content_column.visible,
+.steps.visible,
+.text_section.visible,
+.image_section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+.image_column, .content_column, .steps, .text_section, .image_section {
+  will-change: transform, opacity;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
 .car_background {
   position: relative;
-  background-image: url('../image/page-title.png');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-repeat: no-repeat;
-  min-height: 250px;
-  padding: 250px 0;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
 }
 
-.car_background::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
+.bookurtaxi-banner-img {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dim effect (black with 50% opacity) */
-  z-index: 1; /* Make sure the overlay is behind the text */
+  object-fit: cover;
+  filter: brightness(0.6);
 }
 
-.overlay_text {
+.bookurtaxi-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
   color: white;
-  position: relative;
-  z-index: 2; 
-  padding: 20px;
-  border-radius: 10px;
-}
-.overlay_text h1 {
-  font-size: 6rem;
-  font-weight: bold;
+  padding: 10px;
+  width: 90%;
 }
 
-.overlay_text p {
-  font-size: 1.8rem;
-  font-weight: 600;
+.bookurtaxi-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.bookurtaxi-breadcrumb a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.bookurtaxi-breadcrumb a:hover {
+  color: #ffee02;
+}
+
+/* Form Container */
+.bookurtaxi-container {
+  max-width: 700px;
+  margin: -100px auto 50px;
+  background: #fff;
+  padding: 30px;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
 }
 
 /* Container to hold content and image */
@@ -57,7 +115,7 @@
 }
 
 .content_column h1 {
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   margin-bottom: 10px;
   font-weight: 600;
   margin-top: 30px;
@@ -72,11 +130,11 @@
 }
 
 .content_column p {
-  font-size: 25px;
-  line-height: 1.6;
+  font-size: 20px;
+  line-height: 1.5;
   margin-bottom: 15px;
   margin-top: 40px;
-  width: 700px;
+  width: 570px;
   font-weight: 400;
   color: black;
 }
@@ -87,14 +145,13 @@
   color: black;
 }
 .content_column li{
-  font-size: 25px;
+  font-size: 20px;
   line-height: 1.8;
   color: black;
 }
-h3, .content_column .phone_number{
+h3, .phone_number{
   font-size: 2rem;
   font-weight: bold;
-  margin-top: 0px;
 }
 
 /* Image column styling */
@@ -112,10 +169,10 @@ h3, .content_column .phone_number{
 .image_column::before {
   content: "";
   position: absolute;
-  left: 20%;
+  left: 15%;
   bottom: 0; top: -35px;
-  width: 500px;
-  height: 800px;
+  width: 400px;
+  height: 650px;
   background-color: rgba(255, 240, 37, 0.932); /* Transparent yellow */
   transform: skewX(-20deg) translateX(-10px);
   transition: transform 0.3s ease-in-out;
@@ -125,10 +182,10 @@ h3, .content_column .phone_number{
 .image_column::after {
   content: "";
   position: absolute;
-  left: 100px;
-  bottom: -20px;
+  left: 70px;
+  bottom: -0px;
   width: 420px; /* Bigger than before */
-  height: 770px;
+  height: 670px;
   background-color: rgba(255, 255, 0, 0.3); /* More transparent yellow */
   transform: skewX(-20deg) translateX(-20px);
   transition: transform 0.3s ease-in-out;
@@ -141,7 +198,7 @@ h3, .content_column .phone_number{
 
 .image1{
   display: block;
-  height: 670px;
+  height: 550px;
   object-fit: cover;
   position: relative;
   width: 100%;
@@ -172,7 +229,7 @@ h3, .content_column .phone_number{
     left: 0;
     margin-top: 50px;
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover; /* Ensures the image covers the entire container */
     z-index: -1; /* Keeps the image behind the content */
   }
@@ -182,7 +239,7 @@ h3, .content_column .phone_number{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%; /* Adjust width to leave space around */
+    width: 90%; /* Adjust width to leave space around */
     padding: 20px;
     border-radius: 8px;
     margin-top: 5%;
@@ -199,8 +256,9 @@ h3, .content_column .phone_number{
   
   /* Headings and paragraph styling */
   .text_section h1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 10px;
+    font-weight: bold;
   }
   
   .text_section h2 {
@@ -212,11 +270,15 @@ h3, .content_column .phone_number{
   }
   
   .text_section ul {
-    font-size: 40px;
-    line-height: 3.5;
+    font-size: 28px;
+    line-height: 2.5;
     margin-bottom: 15px;
   }
   
+  .text_section li:hover, .text_section h2:hover{
+    color: #ffee02;
+    cursor: pointer;
+  }
   /* Image section styling */
   .image_section {
     flex: 1;
@@ -229,7 +291,7 @@ h3, .content_column .phone_number{
   
   .company_image {
     width: 100%;
-    max-width: 600px; /* Set a max-width to control the image size */
+    max-width: 450px; /* Set a max-width to control the image size */
     height: auto;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
@@ -237,11 +299,11 @@ h3, .content_column .phone_number{
   .image_section::before {
     content: "";
     position: absolute;
-    left: 15%;
+    left: 20%;
     bottom: 0;
     width: 450px;
-    height: 70vh;
-    top: -7%;
+    height: 77vh;
+    top: -9%;
     background-color: rgba(255, 240, 37, 0.932); /* Transparent yellow */
     transform: skewX(-20deg) translateX(-10px);
     transition: transform 0.3s ease-in-out;
@@ -253,7 +315,7 @@ h3, .content_column .phone_number{
     left: 100px;
     bottom: -20px;
     width: 400px; /* Bigger than before */
-    height: 770px;
+    height: 570px;
     background-color: rgba(254, 254, 121, 0.981); /* More transparent yellow */
     transform: skewX(-20deg) translateX(-20px);
     transition: transform 0.3s ease-in-out;
@@ -274,7 +336,7 @@ h3, .content_column .phone_number{
   }
   
   .section_title h2 {
-    font-size: 70px;
+    font-size: 60px;
     font-weight: bold; 
     color: black;
   }
@@ -295,7 +357,7 @@ h3, .content_column .phone_number{
   .steps::before {
     content: "";
     position: absolute;
-    height: 450px;
+    height: 370px;
     width: 200px;
     background-color: rgba(255, 255, 0, 0.3);
     z-index: -1;
@@ -304,6 +366,19 @@ h3, .content_column .phone_number{
     transition: opacity 0.3s ease-in-out;
   }
 
+  .steps::after{
+    content: "";
+    position: absolute;
+    left: 30%;
+    bottom: 0;
+    width: 200px;
+    height: 370px;
+    top: -0%;
+    background-color: rgba(255, 240, 37, 0.932); /* Transparent yellow */
+    transform: skewX(-20deg) translateX(-10px);
+    transition: transform 0.3s ease-in-out;
+    z-index: -2;
+  }
   .step_icon {
     font-size: 40px;
     background: #fff;
@@ -311,123 +386,142 @@ h3, .content_column .phone_number{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     margin: 0 auto 15px;
     border: 2px solid #000;
   }
   
   .step_img{
     border-radius: 50%;
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
   }
 
   .step_content h4 {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
     color: black;
   }
   
   .step_content p {
     color: black;
-    font-size: 20px;
+    font-size: 16px;
     width: 300px;
-    margin-left: 20%;
+    margin-left: 10%;
   }
 
-.driver_section_title {
-  font-size: 60px;
-  font-weight: bold;
-  margin-top: 10%;
-  text-align: center;
-  color: black;
+  /* Responsive styles */
+@media screen and (max-width: 1200px) {
+  .content_column h2 {
+    font-size: 4rem;
+    width: 100%;
+  }
+  .content_column p {
+    width: 100%;
+  }
+  .image_column::before, .image_column::after, .image_section::after, .image_section::before,
+  .steps::after, .steps::before {
+    display: none;
+  }
+  .image1, .company_image {
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+  }
+  .image2 {
+    display: none;
+  }
+  .section_title{
+    margin-bottom: 70px;
+  }
 }
 
-.driver_profile_column {
-  padding: 10px; /* Reduced padding */
-  margin-top: -90px;
+@media screen and (max-width: 992px) {
+  .row {
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+  }
+  .content_column, 
+  .image_column,
+  .text_section {
+    flex: none;
+    width: 100%;
+    padding: 20px;
+  }
+  .content_column h2 {
+    font-size: 3rem;
+  }
+  .image_column::before, .image_column::after {
+    display: none;
+  }
+  .background_image{
+    height: 100vh;
+    width: 100%;
+  }
+  .company_image {
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+  }
 }
 
-.driver_profile_card {
-  margin: 20px; /* Less margin between cards */
-  width: 100%; /* Ensures cards take up available space */
-  max-width: 700px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  background: transparent;
+@media screen and (max-width: 768px) {
+  .bookurtaxi-title {
+    font-size: 2rem;
+  }
+  .bookurtaxi-container {
+    width: 95%;
+    padding: 20px;
+  }
+  .text_section h2 {
+    font-size: 50px;
+    width: 100%;
+  }
+  .text_section ul {
+    font-size: 22px;
+    width: 100%;
+  }
+  .steps_row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .steps::before, .steps::after {
+    display: none;
+  }
 }
 
-.driver_section {
-  padding: 40px 200px; /* Reduced section padding */
-  text-align: center;
-}
-
-.driver_profile_card:hover {
-  transform: translateY(-5px);
-}
-
-.driver_profile_image::before{
-    content: "";
-    position: absolute;
-    height: 440px;
-    width: 150px;
-    background-color: yellow;
-    z-index: -1;
-    top: 200px;
-    margin-left: 100px;
-    transform: skewX(-20deg) translateX(0);
-    transition: opacity 0.3s ease-in-out; 
-}
-
-.driver_profile_name {
-  font-weight: bold;
-  font-size: 40px;
-  color: #000;
-}
-
-.driver_profile_position {
-  color: #000;
-  font-size: 25px;
-}
-
-.driver_contact {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  margin: 10px 0;
-  color: black;
-}
-
-.driver_icon {
-  color: black;
-  margin-right: 5px;
-}
-
-.driver_profile_image img {
-  width: 100%;
-  height: 350px;
-  max-width: 300px; /* Adjust image size */
-  transform: skewX(-20deg) translateX(0);
-  transition: opacity 0.3s ease-in-out;
-}
-
-.driver_social_icons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  font-size: 40px;
-  margin-top: 15px;
-}
-
-.driver_social_icons svg {
-  cursor: pointer;
-  transition: transform 0.3s;
-  background: black;
-}
-
-.driver_social_icons svg:hover {
-  transform: scale(1.2);
+@media screen and (max-width: 576px) {
+  .bookurtaxi-overlay {
+    width: 100%;
+    padding: 5px;
+  }
+  .content_column h2 {
+    font-size: 2.5rem;
+  }
+  .content_column p {
+    font-size: 16px;
+  }
+  .text_section h2 {
+    font-size: 40px;
+  }
+  .text_section ul {
+    font-size: 18px;
+  }
+  .step_content h4 {
+    font-size: 20px;
+  }
+  .steps-row{
+    margin-bottom: 30px;
+  }
+  .step_content p {
+    font-size: 14px;
+  }
+  .company_image{
+      height: auto;
+      max-width: 100%;
+      object-fit: cover;
+  }
+  
 }
