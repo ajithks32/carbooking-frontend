@@ -1,0 +1,97 @@
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+ 
+  margin: 0;
+  
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1, h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px;
+  color: black !important;
+  font-size: 13px;
+}
+
+th {
+  background-color: #2c3e50;
+  color: white !important;
+  font-weight: 600;
+}
+
+/* Alternate row color */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover Effect */
+tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Responsive Table */
+@media screen and (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #333;
+    min-width: 50%;
+  }
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}

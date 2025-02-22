@@ -1,0 +1,148 @@
+/* Navbar Styling */
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.logo{
+    height: 40px;
+    object-fit: cover;
+}
+
+/* Ensure profile is aligned to the right */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto; /* Push to the right */
+  }
+  
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .username {
+    font-weight: bold;
+    font-size: 16px;
+    color: white !important;
+  }
+  
+/* Align profile to the right */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto; /* Push to right */
+  }
+  
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .username {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .logout-icon {
+    cursor: pointer;
+    font-size: 18px;
+    color: red;
+    transition: color 0.3s ease;
+  }
+  
+  .logout-icon:hover {
+    color: darkred;
+  }
+  
+  /* Login button style */
+  .login-btn {
+    background-color: #ffee02;
+    color: black !important;
+    padding: 8px 45px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+
+  
+ 
+ 
+  
+
+.navbar {
+    background-color: black !important;
+    padding: 15px 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fix navbar at the top */
+    top: 0; /* Ensure it's at the top */
+    left: 0; 
+    width: 100%;
+    z-index: 1000; /* Make sure it's above other content */
+}
+
+
+.container-fluid {
+    background-color: black; /* Ensure the container background is also black */
+}
+
+/* Brand Styling */
+.navbar .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: #ffee02; /* Yellow text for the brand */
+}
+
+.navbar .navbar-brand svg {
+    margin-left: 5px;
+}
+
+/* Navbar Links */
+.navbar-nav .nav-item {
+    margin: 0 15px;
+}
+
+/* Centering Navbar Links */
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Adds spacing between links */
+}
+
+/* Navbar Link Styling */
+.navbar-nav .nav-item .nav-link {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #ffffff; /* White text for links */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #ffee02; /* Yellow hover color for the links */
+}
+
+
+/* Navbar Toggler */
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+  
