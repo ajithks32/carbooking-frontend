@@ -136,7 +136,7 @@ const Container = () => {
     useEffect(() => {
       const fetchOffers = async () => {
         try {
-          const response = await axios.get("http://localhost:5000/offers");
+          const response = await axios.get("https://car-rental-backend-zy09.onrender.com/offers");
           
           setOfferImages(response.data); // No need to modify paths here anymore
     
