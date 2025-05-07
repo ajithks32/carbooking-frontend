@@ -14,7 +14,7 @@ const BannerImage = () => {
     const fetchBanners = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get("http://localhost:5000/carsbanner");
+        const response = await axios.get("https://car-rental-backend-zy09.onrender.com/carsbanner");
         setUploadedImages(response.data);
       } catch (error) {
         setError("Error fetching banners. Please try again later.");
@@ -43,7 +43,7 @@ const BannerImage = () => {
     setSuccess(null);
 
     try {
-      const response = await axios.post("http://localhost:5000/carsbanner", formData, {
+      const response = await axios.post("https://car-rental-backend-zy09.onrender.com/carsbanner", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -65,7 +65,7 @@ const BannerImage = () => {
     setSuccess(null);
 
     try {
-      await axios.delete(`http://localhost:5000/carsbanner/${imageName}`);
+      await axios.delete(`https://car-rental-backend-zy09.onrender.com/carsbanner/${imageName}`);
       setUploadedImages((prev) => prev.filter((img) => img !== imageUrl));
       setSuccess("Image deleted successfully!");
     } catch (error) {
